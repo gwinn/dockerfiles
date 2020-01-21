@@ -2,6 +2,7 @@ FROM php:7.3-cli
 
 RUN apt-get update && apt-get -y upgrade && apt-get install -y git \
  libpq-dev \
+ libzip-dev \
  zlib1g-dev \
  libxml2-dev
 
@@ -13,8 +14,8 @@ RUN docker-php-ext-install pdo_pgsql
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install zip
 
-RUN pecl install xdebug-2.6.0
-RUN pecl install redis-4.0.1
+RUN pecl install xdebug-2.8.0
+RUN pecl install redis-4.3.0
 RUN docker-php-ext-enable redis xdebug
 
 RUN apt-get clean
